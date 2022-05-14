@@ -20,7 +20,7 @@ const selectedHumidity = document.querySelector(
 );
 const selectedUv = document.querySelector("#today-section .uv span");
 
-// 5 Day Forecast
+// 5 Day Forecast Econst oneDayLaterDate = document.querySelector('#one-day-later .date');
 const oneDayLaterDate = document.querySelector("#one-day-later .date");
 const oneDayLaterIcon = document.querySelector("#one-day-later .icon");
 const oneDayLaterTemp = document.querySelector("#one-day-later .temp span");
@@ -65,7 +65,7 @@ const fiveDaysLaterHumidity = document.querySelector(
   "#five-days-later .humidity span"
 );
 
-// Get Today's date and then calculate the next 5
+// Get Dates
 let today = new Date();
 let dd = String(today.getDate()).padStart(2, "0");
 let mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -98,7 +98,6 @@ function updateWeather() {
     .then((data) => {
       // console.dir(data)
       // Today
-      console.log(data.current.weather[0].icon);
       selectedCity.innerHTML = city + " (" + today + ")";
       if (data.current.weather[0].icon === "01d") {
         selectedIcon.src = "./assets/imgs/clear-day.svg";
@@ -153,23 +152,23 @@ function updateWeather() {
 
       // One day later
       oneDayLaterTemp.innerHTML = data.daily[0].temp.day + "&deg;F";
-      if (data.current.weather[0].icon === "01d") {
+      if (data.daily[0].weather[0].icon === "01d") {
         oneDayLaterIcon.src = "./assets/imgs/clear-day.svg";
-      } else if (data.current.weather[0].icon === "02d") {
+      } else if (data.daily[0].weather[0].icon === "02d") {
         oneDayLaterIcon.src = "./assets/imgs/partly-cloudy-day.svg";
-      } else if (data.current.weather[0].icon === "03d") {
+      } else if (data.daily[0].weather[0].icon === "03d") {
         oneDayLaterIcon.src = "./assets/imgs/cloudy.svg";
-      } else if (data.current.weather[0].icon === "04d") {
+      } else if (data.daily[0].weather[0].icon === "04d") {
         oneDayLaterIcon.src = "./assets/imgs/overcast.svg";
-      } else if (data.current.weather[0].icon === "09d") {
+      } else if (data.daily[0].weather[0].icon === "09d") {
         oneDayLaterIcon.src = "./assets/imgs/overcast-rain.svg";
-      } else if (data.current.weather[0].icon === "10d") {
+      } else if (data.daily[0].weather[0].icon === "10d") {
         oneDayLaterIcon.src = "./assets/imgs/partly-cloudy-day-rain.svg";
-      } else if (data.current.weather[0].icon === "11d") {
+      } else if (data.daily[0].weather[0].icon === "11d") {
         oneDayLaterIcon.src = "./assets/imgs/thunderstorms-extreme.svg";
-      } else if (data.current.weather[0].icon === "13d") {
+      } else if (data.daily[0].weather[0].icon === "13d") {
         oneDayLaterIcon.src = "./assets/imgs/snow.svg";
-      } else if (data.current.weather[0].icon === "50d") {
+      } else if (data.daily[0].weather[0].icon === "50d") {
         oneDayLaterIcon.src = "./assets/imgs/mist.svg";
       }
       oneDayLaterIcon.style.opacity = "1";
@@ -178,23 +177,23 @@ function updateWeather() {
 
       // Two days later
       twoDaysLaterTemp.innerHTML = data.daily[1].temp.day + "&deg;F";
-      if (data.current.weather[0].icon === "01d") {
+      if (data.daily[1].weather[0].icon === "01d") {
         twoDaysLaterIcon.src = "./assets/imgs/clear-day.svg";
-      } else if (data.current.weather[0].icon === "02d") {
+      } else if (data.daily[1].weather[0].icon === "02d") {
         twoDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day.svg";
-      } else if (data.current.weather[0].icon === "03d") {
+      } else if (data.daily[1].weather[0].icon === "03d") {
         twoDaysLaterIcon.src = "./assets/imgs/cloudy.svg";
-      } else if (data.current.weather[0].icon === "04d") {
+      } else if (data.daily[1].weather[0].icon === "04d") {
         twoDaysLaterIcon.src = "./assets/imgs/overcast.svg";
-      } else if (data.current.weather[0].icon === "09d") {
+      } else if (data.daily[1].weather[0].icon === "09d") {
         twoDaysLaterIcon.src = "./assets/imgs/overcast-rain.svg";
-      } else if (data.current.weather[0].icon === "10d") {
+      } else if (data.daily[1].weather[0].icon === "10d") {
         twoDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day-rain.svg";
-      } else if (data.current.weather[0].icon === "11d") {
+      } else if (data.daily[1].weather[0].icon === "11d") {
         twoDaysLaterIcon.src = "./assets/imgs/thunderstorms-extreme.svg";
-      } else if (data.current.weather[0].icon === "13d") {
+      } else if (data.daily[1].weather[0].icon === "13d") {
         twoDaysLaterIcon.src = "./assets/imgs/snow.svg";
-      } else if (data.current.weather[0].icon === "50d") {
+      } else if (data.daily[1].weather[0].icon === "50d") {
         twoDaysLaterIcon.src = "./assets/imgs/mist.svg";
       }
       twoDaysLaterIcon.style.opacity = "1";
@@ -203,23 +202,23 @@ function updateWeather() {
 
       // Three days later
       threeDaysLaterTemp.innerHTML = data.daily[2].temp.day + "&deg;F";
-      if (data.current.weather[0].icon === "01d") {
+      if (data.daily[2].weather[0].icon === "01d") {
         threeDaysLaterIcon.src = "./assets/imgs/clear-day.svg";
-      } else if (data.current.weather[0].icon === "02d") {
+      } else if (data.daily[2].weather[0].icon === "02d") {
         threeDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day.svg";
-      } else if (data.current.weather[0].icon === "03d") {
+      } else if (data.daily[2].weather[0].icon === "03d") {
         threeDaysLaterIcon.src = "./assets/imgs/cloudy.svg";
-      } else if (data.current.weather[0].icon === "04d") {
+      } else if (data.daily[2].weather[0].icon === "04d") {
         threeDaysLaterIcon.src = "./assets/imgs/overcast.svg";
-      } else if (data.current.weather[0].icon === "09d") {
+      } else if (data.daily[2].weather[0].icon === "09d") {
         threeDaysLaterIcon.src = "./assets/imgs/overcast-rain.svg";
-      } else if (data.current.weather[0].icon === "10d") {
+      } else if (data.daily[2].weather[0].icon === "10d") {
         threeDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day-rain.svg";
-      } else if (data.current.weather[0].icon === "11d") {
+      } else if (data.daily[2].weather[0].icon === "11d") {
         threeDaysLaterIcon.src = "./assets/imgs/thunderstorms-extreme.svg";
-      } else if (data.current.weather[0].icon === "13d") {
+      } else if (data.daily[2].weather[0].icon === "13d") {
         threeDaysLaterIcon.src = "./assets/imgs/snow.svg";
-      } else if (data.current.weather[0].icon === "50d") {
+      } else if (data.daily[2].weather[0].icon === "50d") {
         threeDaysLaterIcon.src = "./assets/imgs/mist.svg";
       }
       threeDaysLaterIcon.style.opacity = "1";
@@ -228,23 +227,23 @@ function updateWeather() {
 
       // Four days later
       fourDaysLaterTemp.innerHTML = data.daily[3].temp.day + "&deg;F";
-      if (data.current.weather[0].icon === "01d") {
+      if (data.daily[3].weather[0].icon === "01d") {
         fourDaysLaterIcon.src = "./assets/imgs/clear-day.svg";
-      } else if (data.current.weather[0].icon === "02d") {
+      } else if (data.daily[3].weather[0].icon === "02d") {
         fourDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day.svg";
-      } else if (data.current.weather[0].icon === "03d") {
+      } else if (data.daily[3].weather[0].icon === "03d") {
         fourDaysLaterIcon.src = "./assets/imgs/cloudy.svg";
-      } else if (data.current.weather[0].icon === "04d") {
+      } else if (data.daily[3].weather[0].icon === "04d") {
         fourDaysLaterIcon.src = "./assets/imgs/overcast.svg";
-      } else if (data.current.weather[0].icon === "09d") {
+      } else if (data.daily[3].weather[0].icon === "09d") {
         fourDaysLaterIcon.src = "./assets/imgs/overcast-rain.svg";
-      } else if (data.current.weather[0].icon === "10d") {
+      } else if (data.daily[3].weather[0].icon === "10d") {
         fourDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day-rain.svg";
-      } else if (data.current.weather[0].icon === "11d") {
+      } else if (data.daily[3].weather[0].icon === "11d") {
         fourDaysLaterIcon.src = "./assets/imgs/thunderstorms-extreme.svg";
-      } else if (data.current.weather[0].icon === "13d") {
+      } else if (data.daily[3].weather[0].icon === "13d") {
         fourDaysLaterIcon.src = "./assets/imgs/snow.svg";
-      } else if (data.current.weather[0].icon === "50d") {
+      } else if (data.daily[3].weather[0].icon === "50d") {
         fourDaysLaterIcon.src = "./assets/imgs/mist.svg";
       }
       fourDaysLaterIcon.style.opacity = "1";
@@ -253,23 +252,23 @@ function updateWeather() {
 
       // Five days later
       fiveDaysLaterTemp.innerHTML = data.daily[4].temp.day + "&deg;F";
-      if (data.current.weather[0].icon === "01d") {
+      if (data.daily[4].weather[0].icon === "01d") {
         fiveDaysLaterIcon.src = "./assets/imgs/clear-day.svg";
-      } else if (data.current.weather[0].icon === "02d") {
+      } else if (data.daily[4].weather[0].icon === "02d") {
         fiveDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day.svg";
-      } else if (data.current.weather[0].icon === "03d") {
+      } else if (data.daily[4].weather[0].icon === "03d") {
         fiveDaysLaterIcon.src = "./assets/imgs/cloudy.svg";
-      } else if (data.current.weather[0].icon === "04d") {
+      } else if (data.daily[4].weather[0].icon === "04d") {
         fiveDaysLaterIcon.src = "./assets/imgs/overcast.svg";
-      } else if (data.current.weather[0].icon === "09d") {
+      } else if (data.daily[4].weather[0].icon === "09d") {
         fiveDaysLaterIcon.src = "./assets/imgs/overcast-rain.svg";
-      } else if (data.current.weather[0].icon === "10d") {
+      } else if (data.daily[4].weather[0].icon === "10d") {
         fiveDaysLaterIcon.src = "./assets/imgs/partly-cloudy-day-rain.svg";
-      } else if (data.current.weather[0].icon === "11d") {
+      } else if (data.daily[4].weather[0].icon === "11d") {
         fiveDaysLaterIcon.src = "./assets/imgs/thunderstorms-extreme.svg";
-      } else if (data.current.weather[0].icon === "13d") {
+      } else if (data.daily[4].weather[0].icon === "13d") {
         fiveDaysLaterIcon.src = "./assets/imgs/snow.svg";
-      } else if (data.current.weather[0].icon === "50d") {
+      } else if (data.daily[4].weather[0].icon === "50d") {
         fiveDaysLaterIcon.src = "./assets/imgs/mist.svg";
       }
       fiveDaysLaterIcon.style.opacity = "1";
@@ -282,19 +281,20 @@ function updateWeather() {
     });
 }
 
-// set click handlers
+// set click handlers and get long and lat from city name
 function setHandlers() {
   for (let i = 0; i < presetLocations.length; i++) {
     const el = presetLocations[i];
 
     if (i === 0) {
-      searchInput.addEventListener("keyup", function (e) {
-        if (e.keyCode === 13) {
-          searchInputValue();
-        }
-      });
       el.addEventListener("click", function () {
-        searchInputValue();
+        let input = searchInput.value;
+        if (input !== "") {
+          city = input;
+          getCoord();
+        } else {
+          alert("Please enter a city");
+        }
       });
     } else {
       el.addEventListener("click", function () {
@@ -302,17 +302,6 @@ function setHandlers() {
         getCoord();
       });
     }
-  }
-}
-
-// search the input value
-function searchInputValue() {
-  let input = searchInput.value;
-  if (input !== "") {
-    city = input;
-    getCoord();
-  } else {
-    alert("Please enter a city");
   }
 }
 
@@ -337,16 +326,15 @@ function getCoord() {
     });
 }
 
-// get the location of the user to search
 function getUserLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(passUserLocationToApi);
+    navigator.geolocation.getCurrentPosition(showPosition);
   } else {
     alert("Cannot get user location");
   }
 }
 
-function passUserLocationToApi(position) {
+function showPosition(position) {
   // console.dir(position);
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;

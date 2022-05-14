@@ -11,14 +11,71 @@
 
 <body>
   <header>
-    <h1>
-      Weather Dashboard
-    </h1>
+    <h1>Weather Dashboard</h1>
   </header>
   <main>
-
+    <aside class="parameters">
+      <h2>Search for a City:</h2>
+      <input id="search" class="search" type="text" />
+      <button id="search-btn" class="search-btn">Search</button>
+      <hr />
+      <button>Austin</button>
+      <button>Chicago</button>
+      <button>New York</button>
+      <button>Orlando</button>
+      <button>San Francisco</button>
+      <button>Seattle</button>
+      <button>Denver</button>
+      <button>Atlanta</button>
+    </aside>
+    <div class="output">
+      <section id="today-section" class="today-section">
+        <div class="flex-container">
+          <h2 id="city" class="city"><span id="today" class="today"></span></h2>
+        </div>
+        <p class="temp">Temp: <span></span></p>
+        <p class="wind">Wind: <span></span></p>
+        <p class="humidity">Humidity: <span></span></p>
+        <p class="uv">UV Index: <span></span></p>
+      </section>
+      <section id="five-day-forecast" class="five-day-forecast">
+        <h3>5-Day Forecast:</h3>
+        <div>
+          <div id="one-day-later" class="one-day-later">
+            <p class="date"></p>
+            <p class="temp">Temp: <span></span></p>
+            <p class="wind">Wind: <span></span></p>
+            <p class="humidity">Humidity: <span></span></p>
+          </div>
+          <div id="two-days-later" class="two-days-later">
+            <p class="date"></p>
+            <p class="temp">Temp: <span></span></p>
+            <p class="wind">Wind: <span></span></p>
+            <p class="humidity">Humidity: <span></span></p>
+          </div>
+          <div id="three-days-later" class="three-days-later">
+            <p class="date"></p>
+            <p class="temp">Temp: <span></span></p>
+            <p class="wind">Wind: <span></span></p>
+            <p class="humidity">Humidity: <span></span></p>
+          </div>
+          <div id="four-days-later" class="four-days-later">
+            <p class="date"></p>
+            <p class="temp">Temp: <span></span></p>
+            <p class="wind">Wind: <span></span></p>
+            <p class="humidity">Humidity: <span></span></p>
+          </div>
+          <div id="five-days-later" class="five-days-later">
+            <p class="date"></p>
+            <p class="temp">Temp: <span></span></p>
+            <p class="wind">Wind: <span></span></p>
+            <p class="humidity">Humidity: <span></span></p>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
-  <script src="./assets/js/main.js"></script>
+  <!-- <script src="./assets/js/main.js"></script> -->
 </body>
 
 </html>

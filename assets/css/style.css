@@ -85,7 +85,7 @@ main aside.parameters button {
 
 main aside.parameters .search-history {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 main div.output {

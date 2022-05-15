@@ -1,13 +1,18 @@
 // Variables for API
 const APIKey = "71bc39ce704909bddd56694ecdccad8e";
-let city = "My Current Location ";
+let city = "My Current Location";
 let latitude = "";
 let longitude = "";
 
 // Param Elements
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("search-btn");
-let presetLocations = document.querySelectorAll(".parameters button");
+
+let searchHistory = [];
+let storedCityNames = JSON.parse(localStorage.getItem("searchHistory"));
+let searchHistoryContainer = document.querySelectorAll(
+  ".parameters .search-history"
+);
 
 // Main Weather Box Elements
 const todayEl = document.getElementById("today");
@@ -83,6 +88,23 @@ threeDaysLaterDate.innerHTML = mm + "/" + dd3 + "/" + yyyy;
 fourDaysLaterDate.innerHTML = mm + "/" + dd4 + "/" + yyyy;
 fiveDaysLaterDate.innerHTML = mm + "/" + dd5 + "/" + yyyy;
 
+// get stored cities from localstorage or set an empty array
+function getStoredCities() {
+  if (storedCityNames === null) {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  } else {
+    for (let i = 0; i < storedCityNames.length; i++) {
+      const el = storedCityNames[i];
+      const btn = document.createElement("button");
+      btn.innerHTML = el;
+      document.getElementById("search-history").appendChild(btn);
+      searchHistory.push(el);
+    }
+
+    setHandlers();
+  }
+}
+
 // update weather info
 function updateWeather() {
   let queryURL =
@@ -96,7 +118,17 @@ function updateWeather() {
   fetch(queryURL)
     .then((response) => response.json())
     .then((data) => {
-      // console.dir(data)
+      if (city !== "My Current Location") {
+        searchHistory.push(city);
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        const newCity = document.createElement("button");
+        newCity.innerHTML = city;
+        newCity.addEventListener("click", function () {
+          city = newCity.innerHTML;
+          getCoord();
+        });
+        document.getElementById("search-history").appendChild(newCity);
+      }
       // Today
       selectedCity.innerHTML = city + " (" + today + ")";
       if (data.current.weather[0].icon === "01d") {
@@ -276,15 +308,16 @@ function updateWeather() {
       fiveDaysLaterHumidity.innerHTML = data.daily[4].humidity + "%";
     })
     .catch((error) => {
-      // console.log(error);
       alert("Could not get weather data for this city");
     });
 }
 
 // set click handlers and get long and lat from city name
 function setHandlers() {
-  for (let i = 0; i < presetLocations.length; i++) {
-    const el = presetLocations[i];
+  const searchHistoryBtns = document.querySelectorAll(".parameters button");
+
+  for (let i = 0; i < searchHistoryBtns.length; i++) {
+    const el = searchHistoryBtns[i];
 
     if (i === 0) {
       el.addEventListener("click", function () {
@@ -294,6 +327,17 @@ function setHandlers() {
           getCoord();
         } else {
           alert("Please enter a city");
+        }
+      });
+      searchInput.addEventListener("keypress", function (e) {
+        if (e.key === 'Enter') {
+          let input = searchInput.value;
+          if (input !== "") {
+            city = input;
+            getCoord();
+          } else {
+            alert("Please enter a city");
+          }
         }
       });
     } else {
@@ -321,7 +365,6 @@ function getCoord() {
       updateWeather();
     })
     .catch((error) => {
-      // console.log(error);
       alert("Could not get coordinates for this city");
     });
 }
@@ -335,7 +378,6 @@ function getUserLocation() {
 }
 
 function showPosition(position) {
-  // console.dir(position);
   latitude = position.coords.latitude;
   longitude = position.coords.longitude;
   updateWeather();
@@ -350,15 +392,13 @@ function showPosition(position) {
   fetch(queryURL)
     .then((response) => response.json())
     .then((data) => {
-      // console.dir(data)
       // Today
       selectedCity.innerHTML = city + " (" + today + ")";
     })
     .catch((error) => {
-      // console.log(error);
       alert("Could not get weather data for this city");
     });
 }
 
 getUserLocation();
-setHandlers();
+getStoredCities();

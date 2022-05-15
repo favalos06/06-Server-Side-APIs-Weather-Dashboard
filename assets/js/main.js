@@ -325,16 +325,18 @@ function setHandlers() {
         if (input !== "") {
           city = input;
           getCoord();
+          searchInput.value = "";
         } else {
           alert("Please enter a city");
         }
       });
       searchInput.addEventListener("keypress", function (e) {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
           let input = searchInput.value;
           if (input !== "") {
             city = input;
             getCoord();
+            searchInput.value = "";
           } else {
             alert("Please enter a city");
           }

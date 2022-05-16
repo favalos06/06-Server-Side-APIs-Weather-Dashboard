@@ -5,7 +5,8 @@ A Weather Dashboard that displays weather conditions. The weather conditions spe
 
 # Github Links
 Repository: https://github.com/favalos06/06-Server-Side-APIs-Weather-Dashboard
+<br/>
 Live Page: https://favalos06.github.io/06-Server-Side-APIs-Weather-Dashboard/
 
 # Preview
-<p align="center"> <img src="./assets/img/screenshot.png"> </p>
+<p align="center"> <img src="./assets/imgs/screenshot.png"> </p>

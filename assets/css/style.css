@@ -60,12 +60,15 @@ main aside.parameters button {
   padding-left: 10px;
   padding-right: 10px;
   font-weight: 700;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  border: 0;
 }
 
 main aside.parameters input {
   margin-bottom: 16px;
   min-height: 30px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 main aside.parameters button.search-btn {
@@ -77,11 +80,13 @@ main aside.parameters hr {
   width: 100%;
   margin-top: 0;
   margin-bottom: 16px;
+  border: 0;
+  background: #989898;
+  height: 1px;
 }
 
 main aside.parameters button {
   margin-bottom: 16px;
-  border: 0;
   white-space: nowrap;
   min-height: 36px;
   cursor: pointer;
@@ -98,7 +103,11 @@ main div.output {
 }
 
 main div.output section.today-section {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   padding: 16px 16px;
 }
 
@@ -109,7 +118,7 @@ main div.output section.today-section #city {
 main div.output section.today-section .uv span {
   color: #fff;
   padding: 2px 10px;
-  border-radius: 5px;
+  border-radius: 6px;
   margin-left: 8px;
 }
 
@@ -138,11 +147,15 @@ main div.output section.five-day-forecast > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border: 0;
 }
 
 main div.output section.five-day-forecast > div > div {
   position: relative;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   padding: 50px 20px;
   width: 14%;
   background-color: #2d3e50;
@@ -170,10 +183,6 @@ main div.output section.five-day-forecast > div > div p {
   main div.output {
     width: 100%;
     padding-left: 0;
-  }
-
-  main div.output section.today-section {
-    margin-bottom: 10px;
   }
 
   main div.output section.five-day-forecast > div {

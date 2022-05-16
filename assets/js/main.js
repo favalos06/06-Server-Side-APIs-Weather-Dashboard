@@ -92,6 +92,8 @@ fiveDaysLaterDate.innerHTML = mm + "/" + dd5 + "/" + yyyy;
 function getStoredCities() {
   if (storedCityNames === null) {
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+    setHandlers();
   } else {
     for (let i = 0; i < storedCityNames.length; i++) {
       const el = storedCityNames[i];

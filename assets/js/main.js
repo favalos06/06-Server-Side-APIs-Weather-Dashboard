@@ -402,5 +402,16 @@ function showPosition(position) {
     });
 }
 
+function fadeIn() {
+  const main = document.querySelector("main");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+      main.classList.add("show");
+    }, 750);
+  });
+}
+
 getUserLocation();
 getStoredCities();
+fadeIn();

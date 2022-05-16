@@ -354,7 +354,7 @@ function setHandlers() {
 // get coordinates from city to pass to api
 function getCoord() {
   let queryURL =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     city +
     "&appid=" +
     APIKey;

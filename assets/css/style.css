@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -155,4 +159,30 @@ main div.output section.five-day-forecast > div > div .icon {
 main div.output section.five-day-forecast > div > div p {
   font-size: 90%;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  main aside.parameters,
+  main div.output {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  main div.output section.today-section {
+    margin-bottom: 10px;
+  }
+
+  main div.output section.five-day-forecast > div {
+    flex-direction: column;
+  }
+
+  main div.output section.five-day-forecast > div > div {
+    width: unset;
+    padding: 50px 15px 20px;
+    margin-bottom: 10px;
+  }
 }
